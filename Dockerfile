@@ -11,7 +11,7 @@ ENV HADOOP_HOME=/usr/local/hadoop \
     JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk \
     PATH=$PATH:/usr/local/hive/bin:/usr/local/hadoop/bin:/usr/local/hadoop/sbin
 
-RUN yum install java-1.8.0-openjdk-devel which openssh-server openssh-clients -y && \
+RUN yum install java-1.8.0-openjdk-devel net-tools which openssh-server openssh-clients -y && \
     cd /usr/local/ && \
     curl -o apache-hive-2.3.7-bin.tar.gz https://downloads.apache.org/hive/hive-2.3.7/apache-hive-2.3.7-bin.tar.gz && \
     tar xzf apache-hive-2.3.7-bin.tar.gz && \
