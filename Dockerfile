@@ -29,3 +29,5 @@ RUN yum install java-1.8.0-openjdk-devel net-tools which openssh-server openssh-
     rm -rf db-derby-10.14.2.0-bin.tar.gz && \
     ln -s db-derby-10.14.2.0-bin derby
 
+COPY appconfig.tgz /opt/configscripts/appconfig.tgz
+

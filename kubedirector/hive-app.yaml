@@ -1,0 +1,46 @@
+apiVersion: kubedirector.hpe.com/v1beta1
+kind: KubeDirectorApp
+metadata:
+  name: hive
+spec:
+  label:
+    name: Hive
+    description: Apache Hive
+  distroID: dzinsouhpe/hive
+  version: '2.3.7'
+  configSchemaVersion: 7
+  services:
+  - id: hiveserver2
+    label:
+      name: Hive Server
+    endpoint:
+      port: 10000
+#      urlScheme: jdbc:hive2
+#      path: /
+      isDashboard: false
+  - id: metastore
+    label:
+      name: Hive Metastore
+    endpoint:
+      port: 9083
+      isDashboard: false
+  defaultImageRepoTag: docker.io/dzinsouhpe/hive:2.3.7
+  defaultConfigPackage:
+    packageURL: file:///opt/configscripts/appconfig.tgz
+  roles:
+  - id: metastore
+    cardinality: "1"
+  - id: hiveserver2
+    cardinality: "1+"
+  config:
+    selectedRoles:
+    - metastore
+    roleServices:
+    - roleID: metastore
+      serviceIDs:
+      - metastore
+    - roleID: hiveserver2
+      serviceIDs:
+      - hiveserver2
+  systemdRequired: false
+
