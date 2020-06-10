@@ -1,7 +1,7 @@
 <configuration>
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:derby://127.0.0.1/metastore_db;create=true</value>
+    <value>jdbc:derby://@@@@METASTORE_DB_IP@@@@/metastore_db;create=true</value>
     <description>JDBC connect string for a JDBC metastore</description>
   </property>
  
@@ -31,7 +31,7 @@
  
   <property>
     <name>hive.server2.thrift.bind.host</name>
-    <value>@@@@HOST_IP@@@@</value>
+    <value>@@@@HIVESERVER2_IP@@@@</value>
     <description>TCP interface to bind to</description>
   </property>
  

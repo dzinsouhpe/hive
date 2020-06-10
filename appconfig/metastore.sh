@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-/usr/local/derby/bin/startNetworkServer -h 127.0.0.1 1>> /tmp/hive/derby-cmd.log 2>> /tmp/hive/derby-cmd.log &
-derby_status=$(netstat -an | grep -c "127.0.0.1:1527")
+/usr/local/derby/bin/startNetworkServer -h @@@@METASTORE_DB_IP@@@@ 1>> /tmp/hive/derby-cmd.log 2>> /tmp/hive/derby-cmd.log &
+derby_status=$(netstat -an | grep -c "@@@@METASTORE_DB_IP@@@@:1527")
 
 while [ ${derby_status} -le 0 ]
 do
     echo "Waiting for Derby database..."
     sleep 1
-    derby_status=$(netstat -an | grep -c "127.0.0.1:1527")
+    derby_status=$(netstat -an | grep -c "@@@@METASTORE_DB_IP@@@@:1527")
 done
 
 echo "Derby database started"
